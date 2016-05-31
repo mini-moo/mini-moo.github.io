@@ -1,0 +1,651 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="ubuntu14," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="在toolchain/test下已经有打包好的gcc，版本有4.x、5.0、6.0等，可以用PPA升级gcc首先添加ppa到库：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ubuntu14.04安装gcc/g++，并更新至4.9,5.0.....">
+<meta property="og:url" content="http://yoursite.com/2016/05/05/ubuntu14-04安装gcc-g-，并更新至4-9-5-0/index.html">
+<meta property="og:site_name" content="Mini_Mooned">
+<meta property="og:description" content="在toolchain/test下已经有打包好的gcc，版本有4.x、5.0、6.0等，可以用PPA升级gcc首先添加ppa到库：">
+<meta property="og:updated_time" content="2016-05-21T05:00:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ubuntu14.04安装gcc/g++，并更新至4.9,5.0.....">
+<meta name="twitter:description" content="在toolchain/test下已经有打包好的gcc，版本有4.x、5.0、6.0等，可以用PPA升级gcc首先添加ppa到库：">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Mini_Moo'
+    }
+  };
+</script>
+
+  <title> ubuntu14.04安装gcc/g++，并更新至4.9,5.0..... | Mini_Mooned </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Mini_Mooned</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Stay Foolish,Stay hungry!</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                ubuntu14.04安装gcc/g++，并更新至4.9,5.0.....
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-05T21:31:01+08:00" content="2016-05-05">
+              2016-05-05
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/05/ubuntu14-04安装gcc-g-，并更新至4-9-5-0/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/05/ubuntu14-04安装gcc-g-，并更新至4-9-5-0/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <div><div style="margin: 5px 0px 0px; padding: 5px 2px 5px 5px;"><div id="cnblogs_post_body" style="margin: 0px 0px 20px; padding: 0px; word-break: break-word;"><br><br><strong><font size="3">在toolchain/test下已经有打包好的gcc，版本有4.x、5.0、6.0等，可以用PPA升级gcc</font></strong><br><br><span style="margin: 0px; padding: 0px; line-height: 1.5; font-family: 'Microsoft YaHei';"><strong><font size="3">首先添加ppa到库：<a id="more"></a></font></strong></span><br><br><span style="margin: 0px; padding: 0px; line-height: 1.5; font-family: 'Microsoft YaHei';"></span><br><pre class="prettyprint" style="font-family: verdana, 'ms song', 宋体, Arial, 微软雅黑, Helvetica, sans-serif; line-height: 1.5;"><pre style="line-height: 28px; margin-top: 0px; margin-bottom: 0px; padding: 0px; white-space: pre-wrap; word-wrap: break-word; font-family: 'Courier New' !important;"><span style="line-height: 1.5; margin: 0px; padding: 0px; font-family: 'Microsoft YaHei';"><font size="3" style="line-height: 28px;"><span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 128, 128); font-family: 'Courier New' !important;">1</span> <span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 0, 255); font-family: 'Courier New' !important;">sudo</span> add-apt-repository ppa:ubuntu-toolchain-r/<span style="line-height: 1.5; margin: 0px; padding: 0px; font-family: 'Courier New' !important;">test<br></span><span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 128, 128); font-family: 'Courier New' !important;">2</span> <span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 0, 255); font-family: 'Courier New' !important;">sudo</span> apt-get update</font></span></pre></pre><pre style="font-family: 'Courier New' !important; line-height: 28px; margin-top: 0px; margin-bottom: 0px; padding: 0px; white-space: pre-wrap; word-wrap: break-word;"><strong>如果提示未安装，还需要先安装它的包（<font color="#ff0000">注意这一步</font>）：</strong></pre><pre class="prettyprint" style="font-family: verdana, 'ms song', 宋体, Arial, 微软雅黑, Helvetica, sans-serif; line-height: 1.5;"><br><br><span style="line-height: 1.5; white-space: pre-wrap; margin: 0px; padding: 0px; color: rgb(0, 128, 128); font-family: 'Courier New' !important; background-color: rgb(245, 245, 245);">1</span><span style="font-family: 'Courier New'; line-height: 28px; white-space: pre-wrap; background-color: rgb(245, 245, 245);"> </span><span style="line-height: 1.5; white-space: pre-wrap; margin: 0px; padding: 0px; color: rgb(0, 0, 255); font-family: 'Courier New' !important; background-color: rgb(245, 245, 245);">sudo </span><span style="font-family: 'Courier New'; line-height: 28px; white-space: pre-wrap; background-color: rgb(245, 245, 245);">apt-get </span><span style="line-height: 1.5; white-space: pre-wrap; margin: 0px; padding: 0px; color: rgb(0, 0, 255); font-family: 'Courier New' !important; background-color: rgb(245, 245, 245);">install</span><span style="font-family: 'Courier New'; line-height: 28px; white-space: pre-wrap; background-color: rgb(245, 245, 245);"> software-properties-common</span><br></pre><br><br><span style="margin: 0px; padding: 0px; line-height: 1.5; font-family: 'Microsoft YaHei';"><font size="3"><strong>默认在系统中安装的是gcc-4.8，可以先升级一下，接着就可以选择安装gcc-4.9、gcc-5之类的啦！（注意目前gcc-5实际上是5.3.0，没有5.1或5.2可供选择）</strong></font></span><br><br><span style="margin: 0px; padding: 0px; line-height: 1.5; font-family: 'Microsoft YaHei';"></span><br><pre style="font-family: 'Courier New' !important; line-height: 28px; margin-top: 0px; margin-bottom: 0px; padding: 0px; white-space: pre-wrap; word-wrap: break-word;"><pre class="prettyprint"><pre style="line-height: 28px; margin-top: 0px; margin-bottom: 0px; padding: 0px; white-space: pre-wrap; word-wrap: break-word; font-family: 'Courier New' !important;"><span style="line-height: 1.5; margin: 0px; padding: 0px; font-family: 'Microsoft YaHei';"><font size="3" style="line-height: 28px;"><span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 128, 128); font-family: 'Courier New' !important;">1</span> <span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 0, 255); font-family: 'Courier New' !important;">sudo</span> apt-<span style="line-height: 1.5; margin: 0px; padding: 0px; font-family: 'Courier New' !important;">get upgrade<br></span><span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 128, 128); font-family: 'Courier New' !important;">2</span> <span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 0, 255); font-family: 'Courier New' !important;">sudo</span> apt-get <span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 0, 255); font-family: 'Courier New' !important;">install</span> <span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 0, 255); font-family: 'Courier New' !important;">gcc</span>-<span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(128, 0, 128); font-family: 'Courier New' !important;">4.8</span> g++-<span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(128, 0, 128); font-family: 'Courier New' !important;">4.8</span><br><span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 128, 128); font-family: 'Courier New' !important;">3</span> <span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 0, 255); font-family: 'Courier New' !important;">sudo</span> apt-get <span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 0, 255); font-family: 'Courier New' !important;">install</span> <span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 0, 255); font-family: 'Courier New' !important;">gcc</span>-<span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(128, 0, 128); font-family: 'Courier New' !important;">4.9</span> g++-<span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(128, 0, 128); font-family: 'Courier New' !important;">4.9</span><br><span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 128, 128); font-family: 'Courier New' !important;">4</span> <span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 0, 255); font-family: 'Courier New' !important;">sudo</span> apt-get <span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 0, 255); font-family: 'Courier New' !important;">install</span> <span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 0, 255); font-family: 'Courier New' !important;">gcc</span>-<span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(128, 0, 128); font-family: 'Courier New' !important;">5</span> g++-<span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(128, 0, 128); font-family: 'Courier New' !important;">5<span style="line-height: 28px; white-space: pre;">        </span></span></font></span></pre></pre></pre><br><br><span style="margin: 0px; padding: 0px; line-height: 1.5; font-family: 'Microsoft YaHei';"><font size="3"><strong>如果系统做了限制，使用命令gcc -v会发现，版本还是默认的4.8（运行完上面的命令，博主的gcc/g++仍为4.8.5）</strong></font></span><br><br><span style="margin: 0px; padding: 0px; line-height: 1.5; font-family: 'Microsoft YaHei';"></span><br><pre style="line-height: 18px; margin-top: 0px; margin-bottom: 0px; padding: 0px; white-space: pre-wrap; word-wrap: break-word; font-family: 'Courier New' !important;"><pre class="prettyprint"><br><br><span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 128, 128); font-family: 'Courier New' !important;"><span style="font-size: 12px;"> </span><font size="3">1</font></span><font size="3"> <span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 0, 255); font-family: 'Courier New' !important;">update-alternatives</span> <span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 0, 255); font-family: 'Courier New' !important;">–install</span> /usr/bin/gcc gcc /usr/bin/gcc-4.8 <span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(128, 0, 128); font-family: 'Courier New' !important;">48</span><span style="line-height: 1.5; margin: 0px; padding: 0px; font-family: 'Courier New' !important;"> \<br></span><span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 128, 128); font-family: 'Courier New' !important;"> 2</span> <span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 0, 255); font-family: 'Courier New' !important;">–slave</span><span style="line-height: 1.5; margin: 0px; padding: 0px; font-family: 'Courier New' !important;"> /usr/bin/g++ g++ /usr/bin/g++-4.8 \<br></span><span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 128, 128); font-family: 'Courier New' !important;"> 3</span> <span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 0, 255); font-family: 'Courier New' !important;">–slave</span><span style="line-height: 1.5; margin: 0px; padding: 0px; font-family: 'Courier New' !important;"> /usr/bin/gcc-ar gcc-ar /usr/bin/gcc-ar-4.8 \<br></span><span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 128, 128); font-family: 'Courier New' !important;"> 4</span> <span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 0, 255); font-family: 'Courier New' !important;">–slave</span><span style="line-height: 1.5; margin: 0px; padding: 0px; font-family: 'Courier New' !important;"> /usr/bin/gcc-nm gcc-nm /usr/bin/gcc-nm-4.8 \<br></span><span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 128, 128); font-family: 'Courier New' !important;"> 5</span> <span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 0, 255); font-family: 'Courier New' !important;">–slave</span><span style="line-height: 1.5; margin: 0px; padding: 0px; font-family: 'Courier New' !important;"> /usr/bin/gcc-ranlib gcc-ranlib /usr/bin/gcc-ranlib-4.8</span><br><span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 128, 128); font-family: 'Courier New' !important;"> 6</span><br><span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 128, 128); font-family: 'Courier New' !important;"> 7</span> <span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 0, 255); font-family: 'Courier New' !important;">update-alternatives</span> <span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 0, 255); font-family: 'Courier New' !important;">–install</span> /usr/bin/gcc gcc /usr/bin/gcc-4.9 <span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(128, 0, 128); font-family: 'Courier New' !important;">49</span><span style="line-height: 1.5; margin: 0px; padding: 0px; font-family: 'Courier New' !important;"> \<br></span><span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 128, 128); font-family: 'Courier New' !important;"> 8</span> <span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 0, 255); font-family: 'Courier New' !important;">–slave</span><span style="line-height: 1.5; margin: 0px; padding: 0px; font-family: 'Courier New' !important;"> /usr/bin/g++ g++ /usr/bin/g++-4.9 \<br></span><span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 128, 128); font-family: 'Courier New' !important;"> 9</span> <span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 0, 255); font-family: 'Courier New' !important;">–slave</span><span style="line-height: 1.5; margin: 0px; padding: 0px; font-family: 'Courier New' !important;"> /usr/bin/gcc-ar gcc-ar /usr/bin/gcc-ar-4.9 \<br></span><span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 128, 128); font-family: 'Courier New' !important;">10</span> <span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 0, 255); font-family: 'Courier New' !important;">–slave</span><span style="line-height: 1.5; margin: 0px; padding: 0px; font-family: 'Courier New' !important;"> /usr/bin/gcc-nm gcc-nm /usr/bin/gcc-nm-4.9 \<br></span><span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 128, 128); font-family: 'Courier New' !important;">11</span> <span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 0, 255); font-family: 'Courier New' !important;">–slave</span><span style="line-height: 1.5; margin: 0px; padding: 0px; font-family: 'Courier New' !important;"> /usr/bin/gcc-ranlib gcc-ranlib /usr/bin/gcc-ranlib-4.9</span><br><span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 128, 128); font-family: 'Courier New' !important;">12</span><br><span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 128, 128); font-family: 'Courier New' !important;">13</span> <span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 0, 255); font-family: 'Courier New' !important;">update-alternatives</span> <span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 0, 255); font-family: 'Courier New' !important;">–install</span> /usr/bin/gcc gcc /usr/bin/gcc-5 <span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(128, 0, 128); font-family: 'Courier New' !important;">53</span><span style="line-height: 1.5; margin: 0px; padding: 0px; font-family: 'Courier New' !important;"> \<br></span><span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 128, 128); font-family: 'Courier New' !important;">14</span> <span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 0, 255); font-family: 'Courier New' !important;">–slave</span><span style="line-height: 1.5; margin: 0px; padding: 0px; font-family: 'Courier New' !important;"> /usr/bin/g++ g++ /usr/bin/g++-5 \<br></span><span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 128, 128); font-family: 'Courier New' !important;">15</span> <span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 0, 255); font-family: 'Courier New' !important;">–slave</span><span style="line-height: 1.5; margin: 0px; padding: 0px; font-family: 'Courier New' !important;"> /usr/bin/gcc-ar gcc-ar /usr/bin/gcc-ar-5 \<br></span><span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 128, 128); font-family: 'Courier New' !important;">16</span> <span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 0, 255); font-family: 'Courier New' !important;">–slave</span><span style="line-height: 1.5; margin: 0px; padding: 0px; font-family: 'Courier New' !important;"> /usr/bin/gcc-nm gcc-nm /usr/bin/gcc-nm-5 \<br></span><span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 128, 128); font-family: 'Courier New' !important;">17</span> <span style="line-height: 1.5; margin: 0px; padding: 0px; color: rgb(0, 0, 255); font-family: 'Courier New' !important;">–slave</span><span style="line-height: 1.5; margin: 0px; padding: 0px; font-family: 'Courier New' !important;"> /usr/bin/gcc-ranlib gcc-ranlib /usr/bin/gcc-ranlib-5</span></font><br></pre></pre><div><span style="line-height: 1.5; margin: 0px; padding: 0px; font-family: 'Microsoft YaHei';"><span style="line-height: 1.5; margin: 0px; padding: 0px; font-family: 'Courier New' !important;"><span style="font-family: 'Microsoft YaHei'; line-height: 19.5px;"><font size="3"><strong>更新链接不仅仅是为了使用新安装的gcc版本，更重要的是以后可以随时切换。上面的命令是分为3块，每块对应相应的gcc版本，并不是要一股脑全复制粘贴进控制台运行。<font color="#ff0000">要注意反斜杠()前要有空格，因为它只提供换行的功能，还有运行以上命令前加上&nbsp;</font><font color="#ff6600">sudo</font><font color="#ff0000">，不然权限不够</font></strong></font></span></span></span><strong><font color="#ff0000">。</font></strong></div><div><strong>
+</strong></div><div><font face="Microsoft YaHei" size="3"><strong>在终端运行程序则是：</strong></font></div><div><font face="Microsoft YaHei" size="3" color="#0000ff"><strong>g++ XXX.cpp -o XXX</strong></font></div><div><font face="Microsoft YaHei" size="3"><strong>报错则根据提示改错（改完文件记得保存：crtl+s），没有就输入 : &nbsp; <font color="#0000ff">./XXX</font><span style="white-space:pre;">                    </span></strong></font></div><div><span style="line-height: 1.5; margin: 0px; padding: 0px; font-family: 'Microsoft YaHei';"><span style="line-height: 1.5; margin: 0px; padding: 0px; font-family: 'Courier New' !important;"><span style="font-family: 'Microsoft YaHei'; line-height: 19.5px;"><font size="3"><strong>
+</strong></font></span></span></span></div><div><span style="line-height: 1.5; margin: 0px; padding: 0px; font-family: 'Microsoft YaHei';"><span style="line-height: 1.5; margin: 0px; padding: 0px; font-family: 'Courier New' !important;"><span style="font-family: 'Microsoft YaHei'; line-height: 19.5px;"><font size="3"><strong>本文参考：</strong></font></span></span></span><a href="http://www.cnblogs.com/BlackStorm/p/5183490.html" target="_blank" rel="external">ubuntu 14.04 LTS 下升级 gcc 到 gcc-4.9、gcc-5 版本</a></div></div></div><wbr></div>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ubuntu14/" rel="tag">#ubuntu14</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/05/MySql-数据库API汇总/" rel="next" title="MySql 数据库API汇总">
+                <i class="fa fa-chevron-left"></i> MySql 数据库API汇总
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/05/05/如何将sublime-text3变成c-c-IDE（ubuntu14-04）/" rel="prev" title="如何将sublime text3变成c/c++ IDE（ubuntu14.04）">
+                如何将sublime text3变成c/c++ IDE（ubuntu14.04） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/05/05/ubuntu14-04安装gcc-g-，并更新至4-9-5-0/"
+           data-title="ubuntu14.04安装gcc/g++，并更新至4.9,5.0....." data-url="http://yoursite.com/2016/05/05/ubuntu14-04安装gcc-g-，并更新至4-9-5-0/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/head.jpg"
+               alt="Mini-Moo" />
+          <p class="site-author-name" itemprop="name">Mini-Moo</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mini-moo/" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Mini_Mooned" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/minimooned/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/mini_mooned" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-cab"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://lulinchuanllc.com/" title="陆林川" target="_blank">陆林川</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mini-Moo</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"minimooned"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

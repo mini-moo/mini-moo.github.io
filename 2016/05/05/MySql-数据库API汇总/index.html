@@ -1,0 +1,680 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="MySql," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="mysql_affected_rows() 返回被最新的UPDATE, DELETE或INSERT查询影响的行数。
+   mysql_close() 关闭一个服务器连接。   mysql_connect() 连接一个MySQL服务器。该函数不推荐；使用mysql_real_connect()代替。
+   mysql_change_user() 改变在一个打开的连接上的用户和数据库。   my">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySql 数据库API汇总">
+<meta property="og:url" content="http://yoursite.com/2016/05/05/MySql-数据库API汇总/index.html">
+<meta property="og:site_name" content="Mini_Mooned">
+<meta property="og:description" content="mysql_affected_rows() 返回被最新的UPDATE, DELETE或INSERT查询影响的行数。
+   mysql_close() 关闭一个服务器连接。   mysql_connect() 连接一个MySQL服务器。该函数不推荐；使用mysql_real_connect()代替。
+   mysql_change_user() 改变在一个打开的连接上的用户和数据库。   my">
+<meta property="og:updated_time" content="2016-05-21T05:01:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySql 数据库API汇总">
+<meta name="twitter:description" content="mysql_affected_rows() 返回被最新的UPDATE, DELETE或INSERT查询影响的行数。
+   mysql_close() 关闭一个服务器连接。   mysql_connect() 连接一个MySQL服务器。该函数不推荐；使用mysql_real_connect()代替。
+   mysql_change_user() 改变在一个打开的连接上的用户和数据库。   my">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Mini_Moo'
+    }
+  };
+</script>
+
+  <title> MySql 数据库API汇总 | Mini_Mooned </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Mini_Mooned</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Stay Foolish,Stay hungry!</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                MySql 数据库API汇总
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-05T19:48:50+08:00" content="2016-05-05">
+              2016-05-05
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/05/MySql-数据库API汇总/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/05/MySql-数据库API汇总/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <div><br><br><em>   <span style="line-height: 28px;">mysql_affected_rows() 返回被最新的UPDATE, DELETE或INSERT查询影响的行数。</span>
+</em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_close() 关闭一个服务器连接。</span><br><em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_connect() 连接一个MySQL服务器。该函数不推荐；使用mysql_real_connect()代替。</span>
+</em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_change_user() 改变在一个打开的连接上的用户和数据库。</span><br><em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_create_db() 创建一个数据库。该函数不推荐；而使用SQL命令CREATE DATABASE。</span>
+</em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_data_seek() 在一个查询结果集合中搜寻一任意行。</span><br><em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_debug() 用给定字符串做一个DBUG_PUSH。</span>
+</em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_drop_db() 抛弃一个数据库。该函数不推荐；而使用SQL命令DROP DATABASE。</span><br><em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_dump_debug_info() 让服务器将调试信息写入日志文件。</span>
+</em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_eof() 确定是否已经读到一个结果集合的最后一行。这功能被反对; mysql_errno()或mysql_error()可以相反被使用。</span><br><em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_errno() 返回最近被调用的MySQL函数的出错编号。</span>
+</em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_error() 返回最近被调用的MySQL函数的出错消息。</span><br><a id="more"></a><br><em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_escape_string() 用在SQL语句中的字符串的转义特殊字符。</span>
+</em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_fetch_field() 返回下一个表字段的类型。</span><br><em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_fetch_field_direct () 返回一个表字段的类型，给出一个字段编号。</span>
+</em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_fetch_fields() 返回一个所有字段结构的数组。</span><br><em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_fetch_lengths() 返回当前行中所有列的长度。</span>
+</em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_fetch_row() 从结果集合中取得下一行。</span><br><em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_field_seek() 把列光标放在一个指定的列上。</span>
+</em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_field_count() 返回最近查询的结果列的数量。</span><br><em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_field_tell() 返回用于最后一个mysql_fetch_field()的字段光标的位置。</span>
+</em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_free_result() 释放一个结果集合使用的内存。</span><br><em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_get_client_info() 返回客户版本信息。</span>
+</em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_get_host_info() 返回一个描述连接的字符串。</span><br><em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_get_proto_info() 返回连接使用的协议版本。</span>
+</em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_get_server_info() 返回服务器版本号。</span><br><em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_info() 返回关于最近执行得查询的信息。</span>
+</em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_init() 获得或初始化一个MYSQL结构。</span><br><em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_insert_id() 返回有前一个查询为一个AUTO_INCREMENT列生成的ID。</span>
+</em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_kill() 杀死一个给定的线程。</span><br><em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_list_dbs() 返回匹配一个简单的正则表达式的数据库名。</span>
+</em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_list_fields() 返回匹配一个简单的正则表达式的列名。</span><br><em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_list_processes() 返回当前服务器线程的一张表。</span>
+</em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_list_tables() 返回匹配一个简单的正则表达式的表名。</span><br><em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_num_fields() 返回一个结果集合重的列的数量。</span>
+</em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_num_rows() 返回一个结果集合中的行的数量。</span><br><em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_options() 设置对mysql_connect()的连接选项。</span>
+</em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_ping() 检查对服务器的连接是否正在工作，必要时重新连接。</span><br><em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_query() 执行指定为一个空结尾的字符串的SQL查询。</span>
+</em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_real_connect() 连接一个MySQL服务器。</span><br><em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_real_query() 执行指定为带计数的字符串的SQL查询。</span>
+</em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_reload() 告诉服务器重装授权表。</span><br><em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_row_seek() 搜索在结果集合中的行，使用从mysql_row_tell()返回的值。</span>
+</em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_row_tell() 返回行光标位置。</span><br><em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_select_db() 连接一个数据库。</span>
+</em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_shutdown() 关掉数据库服务器。</span><br><em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_stat() 返回作为字符串的服务器状态。</span>
+</em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_store_result() 检索一个完整的结果集合给客户。</span><br><em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_thread_id() 返回当前线程的ID。</span>
+</em>   <span style="font-size: 14px; line-height: 1.5; white-space: pre-wrap;">mysql_use_result() 初始化一个一行一行地结果集合的检索。</span><br><br><wbr></div>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MySql/" rel="tag">#MySql</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/02/sublime-text-3安装SublimeClang/" rel="next" title="sublime text 3安装SublimeClang">
+                <i class="fa fa-chevron-left"></i> sublime text 3安装SublimeClang
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/05/05/ubuntu14-04安装gcc-g-，并更新至4-9-5-0/" rel="prev" title="ubuntu14.04安装gcc/g++，并更新至4.9,5.0.....">
+                ubuntu14.04安装gcc/g++，并更新至4.9,5.0..... <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/05/05/MySql-数据库API汇总/"
+           data-title="MySql 数据库API汇总" data-url="http://yoursite.com/2016/05/05/MySql-数据库API汇总/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/head.jpg"
+               alt="Mini-Moo" />
+          <p class="site-author-name" itemprop="name">Mini-Moo</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mini-moo/" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Mini_Mooned" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/minimooned/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/mini_mooned" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-cab"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://lulinchuanllc.com/" title="陆林川" target="_blank">陆林川</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mini-Moo</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"minimooned"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

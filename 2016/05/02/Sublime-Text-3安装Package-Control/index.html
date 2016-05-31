@@ -1,0 +1,652 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="sublime," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="安装**Package Control（**工欲善其事必先利其器）：Package Control是一个用于管理插件的好工具，可以用于安装、删除、禁用相应的插件，常用的插件都能在上面找到。其源码地址在https://github.com/wbond/package_control_channel上，安装非常方便，使用git（说到git大家可以学习学习，可以去看《progit》这本书https://">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sublime Text 3安装Package Control">
+<meta property="og:url" content="http://yoursite.com/2016/05/02/Sublime-Text-3安装Package-Control/index.html">
+<meta property="og:site_name" content="Mini_Mooned">
+<meta property="og:description" content="安装**Package Control（**工欲善其事必先利其器）：Package Control是一个用于管理插件的好工具，可以用于安装、删除、禁用相应的插件，常用的插件都能在上面找到。其源码地址在https://github.com/wbond/package_control_channel上，安装非常方便，使用git（说到git大家可以学习学习，可以去看《progit》这本书https://">
+<meta property="og:image" content="http://b.bst.126.net/common/portrait/face/preview/face0.gif">
+<meta property="og:updated_time" content="2016-05-21T05:03:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Sublime Text 3安装Package Control">
+<meta name="twitter:description" content="安装**Package Control（**工欲善其事必先利其器）：Package Control是一个用于管理插件的好工具，可以用于安装、删除、禁用相应的插件，常用的插件都能在上面找到。其源码地址在https://github.com/wbond/package_control_channel上，安装非常方便，使用git（说到git大家可以学习学习，可以去看《progit》这本书https://">
+<meta name="twitter:image" content="http://b.bst.126.net/common/portrait/face/preview/face0.gif">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Mini_Moo'
+    }
+  };
+</script>
+
+  <title> Sublime Text 3安装Package Control | Mini_Mooned </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Mini_Mooned</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Stay Foolish,Stay hungry!</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Sublime Text 3安装Package Control
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-02T16:02:51+08:00" content="2016-05-02">
+              2016-05-02
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/02/Sublime-Text-3安装Package-Control/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/02/Sublime-Text-3安装Package-Control/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <div><br><br><strong>安装**</strong>Package Control（<strong>**工欲善其事必先利其器）：</strong><br><strong>Package Control是一个用于管理插件的好工具，可以用于安装、删除、禁用相应的插件，常用的插件都能在上面找到。其源码地址在</strong><a href="https://github.com/wbond/package_control_channel" target="_blank" rel="external"><font color="#0000ff">https://github.com/wbond/package_control_channel</font></a><strong>上，安装非常方便，使用git（说到git大家可以学习学习，可以去看《progit》这本书</strong><a href="https://github.com/git/git" target="_blank" rel="external"><font color="#0000ff">https://github.com/git/git</font></a><strong>这个网址有时进不去有时进的去，可以翻墙</strong><img src="http://b.bst.126.net/common/portrait/face/preview/face0.gif" alt="Sublime Text 3安装Package Control - mpenzlp - mini_moos blog" title="Sublime Text 3安装Package Control - mpenzlp - mini_moos blog">,<strong>详情</strong>：<a href="http://www.lulinchuanllc.com/2016/04/16/%E6%9C%AC%E7%AB%99%E6%8F%90%E4%BE%9B%E8%87%AA%E5%BB%BA%E7%9A%84%E7%A8%B3%E5%AE%9Ass%E4%BB%A3%E7%90%86/" target="_blank" rel="external"><strong>ss代理</strong></a><br><strong>）</strong><div><strong><br><a id="more"></a>
+</strong><div><wbr><span style="font-family: 'Microsoft Yahei', '冬青黑体简体中文 w3', 宋体; letter-spacing: 0.7px; line-height: 25.9px;"><font size="3"><strong>简单的办法就是ctrl+` 打开控制台</strong></font></span><span style="color: rgb(51, 51, 51); font-family: 'Microsoft Yahei', '冬青黑体简体中文 w3', 宋体; font-size: 14px; letter-spacing: 0.7px; line-height: 25.9px;">，</span><span style="font-family: 'Microsoft Yahei', '冬青黑体简体中文 w3', 宋体; letter-spacing: 0.7px; line-height: 25.9px;"><font size="3"><strong>然后将下面的代码放进去回车：</strong></font></span><div><pre class="prettyprint"><br><br><span style="box-sizing: border-box; color: rgb(0, 0, 136);">import</span><span style="box-sizing: border-box;">&nbsp;urllib</span><span style="box-sizing: border-box; color: rgb(102, 102, 0);">.</span><span style="box-sizing: border-box;">request</span><span style="box-sizing: border-box; color: rgb(102, 102, 0);">,</span><span style="box-sizing: border-box;">os</span><span style="box-sizing: border-box; color: rgb(102, 102, 0);">;</span><span style="box-sizing: border-box;">&nbsp;pf&nbsp;</span><span style="box-sizing: border-box; color: rgb(102, 102, 0);">=</span><span style="box-sizing: border-box;">&nbsp;</span><span style="box-sizing: border-box; color: rgb(0, 136, 0);">‘Package Control.sublime-package’</span><span style="box-sizing: border-box; color: rgb(102, 102, 0);">;</span><br><br><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box;">ipp&nbsp;</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box; color: rgb(102, 102, 0);">=</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box;">&nbsp;sublime</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box; color: rgb(102, 102, 0);">.</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box;">installed_packages_path</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box; color: rgb(102, 102, 0);">();</span><br><br><span style="box-sizing: border-box;">urllib</span><span style="box-sizing: border-box; color: rgb(102, 102, 0);">.</span><span style="box-sizing: border-box;">request</span><span style="box-sizing: border-box; color: rgb(102, 102, 0);">.</span><span style="box-sizing: border-box;">install_opener</span><span style="box-sizing: border-box; color: rgb(102, 102, 0);">(</span><span style="box-sizing: border-box;">&nbsp;urllib</span><span style="box-sizing: border-box; color: rgb(102, 102, 0);">.</span><span style="box-sizing: border-box;">request</span><span style="box-sizing: border-box; color: rgb(102, 102, 0);">.</span><span style="box-sizing: border-box;">build_opener</span><span style="box-sizing: border-box; color: rgb(102, 102, 0);">(</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box;">urllib</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box; color: rgb(102, 102, 0);">.</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box;">request</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box; color: rgb(102, 102, 0);">.</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box; color: rgb(102, 0, 102);">ProxyHandler</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box; color: rgb(102, 102, 0);">())</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box;">&nbsp;</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box; color: rgb(102, 102, 0);">);</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box;">&nbsp;</span><br><br><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box;">open</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box; color: rgb(102, 102, 0);">(</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box;">os</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box; color: rgb(102, 102, 0);">.</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box;">path</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box; color: rgb(102, 102, 0);">.</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box;">join</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box; color: rgb(102, 102, 0);">(</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box;">ipp</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box; color: rgb(102, 102, 0);">,</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box;">&nbsp;pf</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box; color: rgb(102, 102, 0);">),</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box;"></span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box; color: rgb(0, 136, 0);">‘wb’</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box; color: rgb(102, 102, 0);">).</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box;">write</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box; color: rgb(102, 102, 0);">(</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box;">urllib</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box; color: rgb(102, 102, 0);">.</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box;">request</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box; color: rgb(102, 102, 0);">.</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box;">urlopen</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box; color: rgb(102, 102, 0);">(</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box;">&nbsp;</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box; color: rgb(0, 136, 0);">‘<a href="http://sublime.wbond.net/" target="_blank" rel="external">http://sublime.wbond.net/</a>‘</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box;">&nbsp;</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box; color: rgb(102, 102, 0);">+</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box;">pf</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box; color: rgb(102, 102, 0);">.</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box;">replace</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box; color: rgb(102, 102, 0);">(</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box; color: rgb(0, 136, 0);">‘ ‘</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box; color: rgb(102, 102, 0);">,</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box; color: rgb(0, 136, 0);">‘%20’</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box; color: rgb(102, 102, 0);">)).</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box;">read</span><span style="line-height: 28px; font-family: 'Hiragino Sans GB W3', 'Hiragino Sans GB', Arial, Helvetica, simsun, 宋体; box-sizing: border-box; color: rgb(102, 102, 0);">())</span><br></pre><br><br><strong><font size="3">当插件控制安装好以后，你就可以安装自己喜欢的插件（快捷键：ctrl+shift+p<font color="#333333">&nbsp;</font>打开Package Control<font color="#333333">），</font>装完之后需要进行重启！！！</font></strong><br></div></div></div></div>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/sublime/" rel="tag">#sublime</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/02/Sublime-Text常用命令/" rel="next" title="Sublime Text常用命令">
+                <i class="fa fa-chevron-left"></i> Sublime Text常用命令
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/05/02/sublime-text-3安装SublimeClang/" rel="prev" title="sublime text 3安装SublimeClang">
+                sublime text 3安装SublimeClang <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/05/02/Sublime-Text-3安装Package-Control/"
+           data-title="Sublime Text 3安装Package Control" data-url="http://yoursite.com/2016/05/02/Sublime-Text-3安装Package-Control/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/head.jpg"
+               alt="Mini-Moo" />
+          <p class="site-author-name" itemprop="name">Mini-Moo</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mini-moo/" target="_blank" title="Github">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  Github
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://twitter.com/Mini_Mooned" target="_blank" title="Twitter">
+                  
+                    <i class="fa fa-fw fa-twitter"></i>
+                  
+                  Twitter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/minimooned/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" target="_blank" title="微博">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  微博
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/mini_mooned" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-cab"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://lulinchuanllc.com/" title="陆林川" target="_blank">陆林川</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mini-Moo</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"minimooned"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
