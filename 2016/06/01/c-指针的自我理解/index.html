@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="c++,虚函数," />
+  <meta name="keywords" content="c++,指针," />
 
 
 
@@ -84,16 +84,20 @@
 
 
 
-<meta name="description" content="当派生类对象撤销时，一般先调用派生类的析构函数，然后再调用基类的析构函数。#include&amp;lt;iostream&amp;gt;using namespace std;class Base{public:    ~Base()    { cout &amp;lt;&amp;lt; “调用基类Base的析构函数\n”; };};class Derived:public Base{public:    ~Derived()">
+<meta name="description" content="c语言最强的莫过于指针，作为c++程序猿，对它也是又爱又恨，它很强大却很容易让人弄混以至于出错（错误一般出的不小）。博主也被它弄的死去活来。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="virtual析构函数">
-<meta property="og:url" content="http://yoursite.com/2016/05/07/virtual析构函数/index.html">
+<meta property="og:title" content="c++指针的自我理解">
+<meta property="og:url" content="http://yoursite.com/2016/06/01/c-指针的自我理解/index.html">
 <meta property="og:site_name" content="Mini_Mooned">
-<meta property="og:description" content="当派生类对象撤销时，一般先调用派生类的析构函数，然后再调用基类的析构函数。#include&amp;lt;iostream&amp;gt;using namespace std;class Base{public:    ~Base()    { cout &amp;lt;&amp;lt; “调用基类Base的析构函数\n”; };};class Derived:public Base{public:    ~Derived()">
-<meta property="og:updated_time" content="2016-05-21T04:57:56.000Z">
+<meta property="og:description" content="c语言最强的莫过于指针，作为c++程序猿，对它也是又爱又恨，它很强大却很容易让人弄混以至于出错（错误一般出的不小）。博主也被它弄的死去活来。">
+<meta property="og:image" content="http://7xud25.com1.z0.glb.clouddn.com/pval.jpg">
+<meta property="og:image" content="http://7xud25.com1.z0.glb.clouddn.com/zhizhen.jpg">
+<meta property="og:image" content="http://7xud25.com1.z0.glb.clouddn.com/jieguo.jpg">
+<meta property="og:updated_time" content="2016-06-01T08:45:17.239Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="virtual析构函数">
-<meta name="twitter:description" content="当派生类对象撤销时，一般先调用派生类的析构函数，然后再调用基类的析构函数。#include&amp;lt;iostream&amp;gt;using namespace std;class Base{public:    ~Base()    { cout &amp;lt;&amp;lt; “调用基类Base的析构函数\n”; };};class Derived:public Base{public:    ~Derived()">
+<meta name="twitter:title" content="c++指针的自我理解">
+<meta name="twitter:description" content="c语言最强的莫过于指针，作为c++程序猿，对它也是又爱又恨，它很强大却很容易让人弄混以至于出错（错误一般出的不小）。博主也被它弄的死去活来。">
+<meta name="twitter:image" content="http://7xud25.com1.z0.glb.clouddn.com/pval.jpg">
 
 
 
@@ -111,7 +115,7 @@
   };
 </script>
 
-  <title> virtual析构函数 | Mini_Mooned </title>
+  <title> c++指针的自我理解 | Mini_Mooned </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -241,7 +245,7 @@
             
             
               
-                virtual析构函数
+                c++指针的自我理解
               
             
           </h1>
@@ -253,8 +257,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-05-07T17:31:38+08:00" content="2016-05-07">
-              2016-05-07
+            <time itemprop="dateCreated" datetime="2016-06-01T16:43:42+08:00" content="2016-06-01">
+              2016-06-01
             </time>
           </span>
 
@@ -264,8 +268,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/05/07/virtual析构函数/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/07/virtual析构函数/" itemprop="commentsCount"></span>
+                <a href="/2016/06/01/c-指针的自我理解/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/01/c-指针的自我理解/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -288,7 +292,21 @@
       
 
       
-        <div>当派生类对象撤销时，一般先调用派生类的析构函数，然后再调用基类的析构函数。<div><pre class="prettyprint"><br><br>#include&lt;iostream&gt;<br>using namespace std;<br>class Base{<br>public:<br>    ~Base()<br>    { cout &lt;&lt; “调用基类Base的析构函数\n”; };<br>};<br>class Derived:public Base{<br>public:<br>    ~Derived()<br>    { cout &lt;&lt; “调用派生类Derived的析构函数\n”; };<br>};<br>int main(void)<br>{<br><font color="#0000ff">    Base <em>p;<br>    p = new Derived;<br>    delete p;</em></font><br>    return 0;<br>}<br><br></pre><div><a id="more"></a>运行结果：</div><div><pre class="prettyprint"><br><br>调用基类Base的析构函数<br></pre></div>如果在主函数中用new运算符建立一个派生类的无名对象<span style="line-height: 28px;">和定义一个基类的对象指针，并将无名对象的地址赋给这个对象指针。当用delete运算符撤销无名对象时，系统只执行基类的析构函数，而不执行派生类的析构函数。</span><font color="#ff0000" style="line-height: 28px;">当撤销指针p所指的派生类的无名对象，而调用析构函数时，采用了</font><span style="color: rgb(255, 102, 0); line-height: 28px;">静态连编方式</span><span style="line-height: 28px; color: rgb(255, 0, 0);">，只调用了基类Base的析构函数。</span></div><div><span style="line-height: 28px;">如果希望程序执行<font color="#ff6600">动态连编方式</font>，在用delete运算符撤销派生类的无名对象时，先调用派生类的析构函数，在调用基类的析构函数，可以讲基类的析构函数声明为虚析构函数。虚析构函数没有类型，没有参数。</span></div><div><span style="line-height: 28px;"><br></span></div><div><span style="line-height: 28px;">将基类Base修改为：</span></div><div><pre class="prettyprint"><br><br><span style="line-height: 28px;">class Base{</span><br><span style="line-height: 28px;">public:</span><br><span style="line-height: 28px;">    <font color="#ff6600">virtual</font> ~Base()</span><br><span style="line-height: 28px;">    { cout &lt;&lt; “调用基类Base的析构函数\n”; };</span><br><span style="line-height: 28px;">};</span><br></pre>运行结果：</div><div><pre class="prettyprint"><br><br><span style="line-height: 28px;">调用派生类Derived的析构函数</span><br><br><span style="line-height: 28px;">调用基类Base的析构函数</span><br></pre>调用的顺序仍然是：<span style="line-height: 28px;"><em>*先调用派生类的析构函数，然后再调用基类的析构函数。</em></span></div></div>
+        <p>c语言最强的莫过于指针，作为c++程序猿，对它也是又爱又恨，它很强大却很容易让人弄混以至于出错（错误一般出的不小）。博主也被它弄的死去活来。<br><a id="more"></a></p>
+<h2 id="问题1"><a href="#问题1" class="headerlink" title="问题1"></a>问题1</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="keyword">int</span> val = <span class="number">20</span>;</span><br><span class="line">$ <span class="keyword">int</span> *p;</span><br><span class="line">$ p = &amp;val;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="keyword">int</span> val = <span class="number">20</span>;</span><br><span class="line">$ <span class="keyword">int</span> *p = &amp;val;   <span class="comment">// p存放着val的地址，或者说p是指向变量val的指针</span></span><br></pre></td></tr></table></figure>
+<p>这是博主纠结的第一个问题，许多程序在开始声明指针和使用指针，有以上两种写法。第一种是不直接初始化指针，系统将会给指针p一个不确定的值，然后在用val来初始化指针。第二种是直接在声明是初始化指针p。baidu和google均无果。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="keyword">int</span> val = <span class="number">20</span>;</span><br><span class="line">$ <span class="keyword">int</span>* p; </span><br><span class="line">$ p = &amp;val;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="keyword">int</span> val = <span class="number">20</span>;</span><br><span class="line">$ <span class="keyword">int</span>* p = &amp;val;</span><br></pre></td></tr></table></figure>
+<p>换一种写法，将 <em> 和类型写在一起，就好理解多了。由上可知p是一个<font color="#00ffff">int型指针</font>，</em>p 就是<font color="#00ffff">int类型</font>。所以上面的就很好理解了，都是将val存放的地址赋给p，让p来存放val的地址。</p>
+<h2 id="问题2"><a href="#问题2" class="headerlink" title="问题2"></a>问题2</h2><p>‘<em>‘这个操作符在c++程序中有多个作用，一个就是乘号，另一个是解引用符。<br>‘</em>‘:如果指针指向了一个对象，则会使用’*’（解引用符）来访问该对象。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="keyword">int</span> val = <span class="number">20</span>;</span><br><span class="line">$ <span class="keyword">int</span>* p = &amp;val;</span><br><span class="line">$ <span class="built_in">cout</span> &lt;&lt; p &lt;&lt; <span class="built_in">endl</span>;   <span class="comment">// 输出：地址</span></span><br><span class="line">$ <span class="built_in">cout</span> &lt;&lt; *p &lt;&lt; <span class="built_in">endl</span>;  <span class="comment">// 输出：20</span></span><br></pre></td></tr></table></figure></p>
+<p>cout &lt;&lt; p 将会输出p存放val的地址值。如果需要输出p所指对象的值则需要<em> 来解除引用，得到指针p所指的对象，’</em>‘其实是一个暴露作用，将p所指的对象的值暴露出来。</p>
+<h2 id="问题3"><a href="#问题3" class="headerlink" title="问题3"></a>问题3</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cout</span> &lt;&lt; p &lt;&lt; <span class="string">" "</span> &lt;&lt; &amp;p &lt;&lt; <span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
+<p>运行结果：<br><img src="http://7xud25.com1.z0.glb.clouddn.com/pval.jpg" alt=""><br>p存的地址和&amp;p取得地址值总是差4<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="keyword">if</span>(p == &amp;p)</span><br><span class="line">$      <span class="built_in">cout</span> &lt;&lt; <span class="string">"Yse"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">$ eles </span><br><span class="line">$      <span class="built_in">cout</span> &lt;&lt; <span class="string">"No"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://7xud25.com1.z0.glb.clouddn.com/zhizhen.jpg" alt=""><br>博主将p和&amp;p进行比较看他们的差别，错误指出这是int<em>和int<em>*之间的比较。所以&amp;p是一个<font color="#oofff">int</font></em></em>类型.<br>p存放的是val的地址，而&amp;p存放的是指针p的地址<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cout</span> &lt;&lt; p &lt;&lt; <span class="string">" "</span> &lt;&lt; *&amp;p &lt;&lt; <span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure></p>
+<p>此时p和<em>&amp;p的地址却是一样的！似乎又回到了问题2上了&amp;p是指针p的地址值，此时’</em>‘作为解引用符，将&amp;p的内容暴露出来了，即p的地址，所以p和*&amp;p的地址是一样的。</p>
+<h2 id="问题4"><a href="#问题4" class="headerlink" title="问题4"></a>问题4</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line"> 	<span class="keyword">int</span> i;</span><br><span class="line"> 	<span class="keyword">int</span>* pi;</span><br><span class="line">    <span class="keyword">int</span>** ppi;</span><br><span class="line">	ppi = &amp;pi; <span class="comment">// 1</span></span><br><span class="line">	*ppi = &amp;i; <span class="comment">// 2</span></span><br><span class="line">	i = <span class="string">'a'</span>;    <span class="comment">// 字符a的ascll码为97</span></span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; i &lt;&lt; <span class="string">" "</span> &lt;&lt; *pi &lt;&lt; <span class="string">" "</span> &lt;&lt; **ppi &lt;&lt; <span class="built_in">endl</span>; </span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; &amp;i &lt;&lt; <span class="string">" "</span> &lt;&lt; &amp;pi &lt;&lt; <span class="string">" "</span> &lt;&lt; &amp;ppi &lt;&lt; <span class="built_in">endl</span>;  </span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; pi &lt;&lt; <span class="string">" "</span> &lt;&lt; ppi &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果：<br><img src="http://7xud25.com1.z0.glb.clouddn.com/jieguo.jpg" alt=""><br>语句1 把ppi初始化为指向变量pi，就可以安全对ppi执行间接访问操作<br>语句2 把pi（通过ppi间接访问）初始化为指向变量i。<br>间接访问可以更好的理解指针。当间接访问的层次越多，需要使用的次数则会越少（摘自《c与指针》）</p>
+
       
     </div>
 
@@ -311,7 +329,7 @@
           
             <a href="/tags/c/" rel="tag">#c++</a>
           
-            <a href="/tags/虚函数/" rel="tag">#虚函数</a>
+            <a href="/tags/指针/" rel="tag">#指针</a>
           
         </div>
       
@@ -320,17 +338,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/05/07/c-虚函数/" rel="next" title="c++虚函数">
-                <i class="fa fa-chevron-left"></i> c++虚函数
+              <a href="/2016/05/31/安装ubuntu16-04小记/" rel="next" title="安装ubuntu16.04小记">
+                <i class="fa fa-chevron-left"></i> 安装ubuntu16.04小记
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/05/10/HTML学习/" rel="prev" title="HTML学习">
-                HTML学习 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -356,8 +370,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/05/07/virtual析构函数/"
-           data-title="virtual析构函数" data-url="http://yoursite.com/2016/05/07/virtual析构函数/">
+      <div class="ds-thread" data-thread-key="2016/06/01/c-指针的自我理解/"
+           data-title="c++指针的自我理解" data-url="http://yoursite.com/2016/06/01/c-指针的自我理解/">
       </div>
     
   </div>
@@ -493,7 +507,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题1"><span class="nav-number">1.</span> <span class="nav-text">问题1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题2"><span class="nav-number">2.</span> <span class="nav-text">问题2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题3"><span class="nav-number">3.</span> <span class="nav-text">问题3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题4"><span class="nav-number">4.</span> <span class="nav-text">问题4</span></a></li></ol></div>
             
           </div>
         </section>

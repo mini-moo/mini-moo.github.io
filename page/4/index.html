@@ -243,6 +243,106 @@
             
               
                 
+                <a class="post-title-link" href="/2016/04/14/qt之编译/" itemprop="url">
+                  qt之编译
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-14T18:55:08+08:00" content="2016-04-14">
+              2016-04-14
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/04/14/qt之编译/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/14/qt之编译/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <div><div style="padding: 0px; margin: 0px; color: rgb(85, 85, 85); font-family: 宋体, 'Arial Narrow', arial, serif; font-size: 14px; line-height: 28px;">由于项目需求需要学习qt编程，所以跟着《qt学习之路》自学qt：（来自：<a href="http://devbean.blog.51cto.com/448512/194137）（本人使用的是ubuntu14.04）" target="_blank" rel="external">http://devbean.blog.51cto.com/448512/194137）（本人使用的是ubuntu14.04）</a></div><div style="padding: 0px; margin: 0px; color: rgb(85, 85, 85); font-family: 宋体, 'Arial Narrow', arial, serif; font-size: 14px; line-height: 28px;"><br></div><div style="padding: 0px; margin: 0px; color: rgb(85, 85, 85); font-family: 宋体, 'Arial Narrow', arial, serif; font-size: 14px; line-height: 28px;">Qt的编译不能使用普通的make，而必须先使用 qmake 进行预编译。所以，第一步应该是在工程目录下使用</div><div style="padding: 0px; margin: 0px; color: rgb(85, 85, 85); font-family: 宋体, 'Arial Narrow', arial, serif; font-size: 14px; line-height: 28px;">qmake -project</div><div style="padding: 0px; margin: 0px; color: rgb(85, 85, 85); font-family: 宋体, 'Arial Narrow', arial, serif; font-size: 14px; line-height: 28px;">命令创建.pro文件(比如说是叫helloworld.pro)。然后再在.pro文件目录下使用</div><div style="padding: 0px; margin: 0px; color: rgb(85, 85, 85); font-family: 宋体, 'Arial Narrow', arial, serif; font-size: 14px; line-height: 28px;">qmake helloworld.pro&nbsp; (make)</div><div style="padding: 0px; margin: 0px; color: rgb(85, 85, 85); font-family: 宋体, 'Arial Narrow', arial, serif; font-size: 14px; line-height: 28px;">或者</div><div style="padding: 0px; margin: 0px; color: rgb(85, 85, 85); font-family: 宋体, 'Arial Narrow', arial, serif; font-size: 14px; line-height: 28px;">qmake -tp vc helloworld.pro&nbsp; (nmake)</div><div style="padding: 0px; margin: 0px; color: rgb(85, 85, 85); font-family: 宋体, 'Arial Narrow', arial, serif; font-size: 14px; line-height: 28px;">生成makefile，然后才能调用make或者是nmake进行编译。</div><div style="padding: 0px; margin: 0px; color: rgb(85, 85, 85); font-family: 宋体, 'Arial Narrow', arial, serif; font-size: 14px; line-height: 28px;">值得说明一点的是，这个qmake能够生成标准的makefile文件，因此完全可以利用qmake自动生成makefile——这是题外话。</div><wbr></div>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/04/13/关于emacs和vi：神的编辑器和编辑器之神/" itemprop="url">
                   关于emacs和vi：神的编辑器和编辑器之神
                 </a>
@@ -681,7 +781,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -691,7 +791,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
